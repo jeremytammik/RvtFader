@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command RvtFader</Text>
+    <Description>Some description for RvtFader</Description>
+    <Assembly>RvtFader.dll</Assembly>
+    <FullClassName>RvtFader.Command</FullClassName>
+    <ClientId>7deb605f-0477-46af-a708-6f22dd7cacfe</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application RvtFader</Name>
+    <Assembly>RvtFader.dll</Assembly>
+    <FullClassName>RvtFader.App</FullClassName>
+    <ClientId>caced79e-bef4-42af-9d51-7de6dbe53eb1</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
