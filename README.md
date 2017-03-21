@@ -3,7 +3,7 @@
 C# .NET Revit add-in to calculate and display signal attenuation using AVF,
 the [analysis visualisation framework](http://thebuildingcoder.typepad.com/blog/avf).
 
-For more information about AVF, please refer to Matt Mason's Autodesk university
+For an introduction to AVF programming basics, please refer to Matt Mason's Autodesk University
 class [CP5229 Seeing Data and More &ndash; The Analysis Visualization Framework](http://aucache.autodesk.com/au2011/sessions/5229/class_handouts/v1_CP5229-SeeingDataAndMore-TheAVFinRevitAPI.pdf)
 ([^](doc/cp5229_matt_mason_avf.pdf)).
 
