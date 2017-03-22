@@ -38,6 +38,7 @@ using System.Runtime.InteropServices;
 // 2017-03-22 2017.0.0.0 settings and avf complete; todo: attenuation raytracing
 // 2017-03-23 2017.0.0.1 PaintFace works; todo: overwrite AVF when called repeatedly and implement ray trace
 // 2017-03-23 2017.0.0.2 avf works fine now with repeated calls
+// 2017-03-23 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
 //
-[assembly: AssemblyVersion( "2017.0.0.2" )]
-[assembly: AssemblyFileVersion( "2017.0.0.2" )]
+[assembly: AssemblyVersion( "2017.0.0.3" )]
+[assembly: AssemblyFileVersion( "2017.0.0.3" )]

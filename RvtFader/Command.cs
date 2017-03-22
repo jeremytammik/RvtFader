@@ -80,12 +80,15 @@ namespace RvtFader
 
     static int _schemaId = -1;
     static SpatialFieldManager _sfm = null;
+    static int _sfp_index = -1;
 
     /// <summary>
     /// Set up the AVF spatial field manager 
     /// for the given view.
     /// </summary>
-    static void SetUpAvfSfm( View view )
+    static void SetUpAvfSfm( 
+      View view, 
+      Reference faceReference )
     {
       if( view.AnalysisDisplayStyleId
         == ElementId.InvalidElementId )
@@ -93,14 +96,31 @@ namespace RvtFader
         SetAvfDisplayStyle( view );
       }
 
-      _sfm = SpatialFieldManager.GetSpatialFieldManager( 
-        view );
+      _sfm = SpatialFieldManager
+        .GetSpatialFieldManager( view );
 
       if( null == _sfm )
       {
         _sfm = SpatialFieldManager
           .CreateSpatialFieldManager( view, 1 );
       }
+      else if( 0 < _sfp_index )
+      {
+        _sfm.RemoveSpatialFieldPrimitive(
+          _sfp_index );
+      }
+
+      _sfp_index = _sfm.AddSpatialFieldPrimitive(
+        faceReference );
+
+      //_sfm = SpatialFieldManager.GetSpatialFieldManager( 
+      //  view );
+
+      //if( null == _sfm )
+      //{
+      //  _sfm = SpatialFieldManager
+      //    .CreateSpatialFieldManager( view, 1 );
+      //}
 
       if( -1 != _schemaId )
       {
@@ -134,21 +154,22 @@ namespace RvtFader
       return ptarget.DistanceTo( psource );
     }
 
-    //static int _idx = -1;
-
     /// <summary>
     /// Calculate and paint the attenuation
     /// values on the given face.
     /// </summary>
-    public static void PaintFace( 
-      Document doc, 
-      Reference r )
+    public static void PaintFace(
+      Face face,
+      XYZ psource )
+
+      //Document doc, 
+      //Reference r )
     {
-      XYZ psource = r.GlobalPoint;
-      UV uvsource = r.UVPoint;
-      Element floor = doc.GetElement( r.ElementId );
-      Face face = floor.GetGeometryObjectFromReference(
-        r ) as Face;
+      //XYZ psource = r.GlobalPoint;
+      //UV uvsource = r.UVPoint;
+      //Element floor = doc.GetElement( r.ElementId );
+      //Face face = floor.GetGeometryObjectFromReference(
+      //  r ) as Face;
 
       IList<UV> uvPts = new List<UV>();
       IList<ValueAtPoint> uvValues = new List<ValueAtPoint>();
@@ -188,12 +209,10 @@ namespace RvtFader
 
       FieldValues fvals = new FieldValues( uvValues );
 
-      //_sfm.Clear();
-
-      int idx = _sfm.AddSpatialFieldPrimitive( r );
+      //int idx = _sfm.AddSpatialFieldPrimitive( r );
 
       _sfm.UpdateSpatialFieldPrimitive(
-        idx, fpts, fvals, _schemaId );
+        _sfp_index, fpts, fvals, _schemaId );
     }
 
     public Result Execute(
@@ -228,11 +247,15 @@ namespace RvtFader
 
       View view = uidoc.ActiveView;
 
-      SetUpAvfSfm( view );
+      SetUpAvfSfm( view, r );
 
       // Display attenuation.
 
-      PaintFace( doc, r );
+      Element floor = doc.GetElement( r.ElementId );
+      Face face = floor.GetGeometryObjectFromReference(
+        r ) as Face;
+
+      PaintFace( face, r.GlobalPoint );
       
       return Result.Succeeded;
     }
