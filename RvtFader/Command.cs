@@ -134,6 +134,8 @@ namespace RvtFader
       return ptarget.DistanceTo( psource );
     }
 
+    //static int _idx = -1;
+
     /// <summary>
     /// Calculate and paint the attenuation
     /// values on the given face.
@@ -163,12 +165,15 @@ namespace RvtFader
         for( double v = vmin; v <= vmax; v += vstep )
         {
           UV uv = new UV( u, v );
-          XYZ ptarget = face.Evaluate( uv );
 
-          uvPts.Add( uv );
+          if( face.IsInside( uv ) )
+          {
+            uvPts.Add( uv );
 
-          vals[0] = AttenuationAt( psource, ptarget );
-          uvValues.Add( new ValueAtPoint( vals ) );
+            XYZ ptarget = face.Evaluate( uv );
+            vals[0] = AttenuationAt( psource, ptarget );
+            uvValues.Add( new ValueAtPoint( vals ) );
+          }
         }
       }
 
@@ -177,8 +182,10 @@ namespace RvtFader
 
       FieldValues fvals = new FieldValues( uvValues );
 
+      //_sfm.Clear();
+
       int idx = _sfm.AddSpatialFieldPrimitive( 
-        face, Transform.Identity );
+        face.Reference );
 
       _sfm.UpdateSpatialFieldPrimitive(
         idx, fpts, fvals, _schemaId );
