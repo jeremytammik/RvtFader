@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AttenuationCalculator.cs" />
     <Compile Include="CmdSettings.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="FormSettings.cs">

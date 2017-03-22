@@ -5,9 +5,9 @@ using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Analysis;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using Autodesk.Revit.DB.Analysis;
 #endregion
 
 namespace RvtFader
@@ -15,6 +15,7 @@ namespace RvtFader
   [Transaction( TransactionMode.Manual )]
   public class Command : IExternalCommand
   {
+    #region Floor selection filter
     /// <summary>
     /// Select only floor elements.
     /// </summary>
@@ -30,7 +31,9 @@ namespace RvtFader
         return true;
       }
     }
+    #endregion // Floor selection filter
 
+    #region Set up analysis display style
     const string _displayStyleName = "Attenuation";
 
     /// <summary>
@@ -137,15 +140,7 @@ namespace RvtFader
         _schemaId = _sfm.RegisterResult( schema );
       }
     }
-
-    /// <summary>
-    /// Calculate the signal attenuation between the 
-    /// given source and target points.
-    /// </summary>
-    static double AttenuationAt( XYZ psource, XYZ ptarget )
-    {
-      return ptarget.DistanceTo( psource );
-    }
+    #endregion // Set up analysis display style
 
     /// <summary>
     /// Calculate and paint the attenuation
@@ -153,7 +148,8 @@ namespace RvtFader
     /// </summary>
     public static void PaintFace(
       Face face,
-      XYZ psource )
+      XYZ psource,
+      AttenuationCalculator calc )
     {
       IList<UV> uvPts = new List<UV>();
       IList<ValueAtPoint> uvValues = new List<ValueAtPoint>();
@@ -182,7 +178,7 @@ namespace RvtFader
             uvPts.Add( uv );
 
             XYZ ptarget = face.Evaluate( uv );
-            vals[0] = AttenuationAt( psource, ptarget );
+            vals[0] = calc.Attenuation( psource, ptarget );
             uvValues.Add( new ValueAtPoint( vals ) );
           }
         }
@@ -234,10 +230,14 @@ namespace RvtFader
       // Display attenuation.
 
       Element floor = doc.GetElement( r.ElementId );
+
       Face face = floor.GetGeometryObjectFromReference(
         r ) as Face;
 
-      PaintFace( face, r.GlobalPoint );
+      AttenuationCalculator calc 
+        = new AttenuationCalculator( doc );
+
+      PaintFace( face, r.GlobalPoint, calc );
       
       return Result.Succeeded;
     }
