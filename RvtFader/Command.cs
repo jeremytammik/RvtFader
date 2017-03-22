@@ -141,9 +141,15 @@ namespace RvtFader
     /// values on the given face.
     /// </summary>
     public static void PaintFace( 
-      Face face, 
-      XYZ psource )
+      Document doc, 
+      Reference r )
     {
+      XYZ psource = r.GlobalPoint;
+      UV uvsource = r.UVPoint;
+      Element floor = doc.GetElement( r.ElementId );
+      Face face = floor.GetGeometryObjectFromReference(
+        r ) as Face;
+
       IList<UV> uvPts = new List<UV>();
       IList<ValueAtPoint> uvValues = new List<ValueAtPoint>();
 
@@ -184,8 +190,7 @@ namespace RvtFader
 
       //_sfm.Clear();
 
-      int idx = _sfm.AddSpatialFieldPrimitive( 
-        face.Reference );
+      int idx = _sfm.AddSpatialFieldPrimitive( r );
 
       _sfm.UpdateSpatialFieldPrimitive(
         idx, fpts, fvals, _schemaId );
@@ -219,20 +224,6 @@ namespace RvtFader
         return Result.Cancelled;
       }
 
-      // Retrieve face to paint.
-
-      Element floor;
-      Face face;
-      XYZ psource;
-      UV uvsource;
-
-      floor = doc.GetElement( r.ElementId );
-      psource = r.GlobalPoint;
-      uvsource = r.UVPoint;
-
-      face = floor.GetGeometryObjectFromReference(
-        r ) as Face;
-
       // Set up AVF display style.
 
       View view = uidoc.ActiveView;
@@ -241,7 +232,7 @@ namespace RvtFader
 
       // Display attenuation.
 
-      PaintFace( face, psource );
+      PaintFace( doc, r );
       
       return Result.Succeeded;
     }
