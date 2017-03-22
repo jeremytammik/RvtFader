@@ -54,10 +54,13 @@ namespace RvtFader
             coloredSurfaceSettings = new
               AnalysisDisplayColoredSurfaceSettings();
 
-          coloredSurfaceSettings.ShowGridLines = true;
+          coloredSurfaceSettings.ShowGridLines = false;
 
           AnalysisDisplayColorSettings colorSettings
             = new AnalysisDisplayColorSettings();
+
+          colorSettings.MinColor = new Color( 0, 255, 0 );
+          colorSettings.MaxColor = new Color( 255, 0, 0 );
 
           AnalysisDisplayLegendSettings legendSettings
             = new AnalysisDisplayLegendSettings();
@@ -69,9 +72,8 @@ namespace RvtFader
               doc, _displayStyleName, coloredSurfaceSettings,
               colorSettings, legendSettings );
 
-          id = analysisDisplayStyle.Id;
-
-          view.AnalysisDisplayStyleId = analysisDisplayStyle.Id;
+          view.AnalysisDisplayStyleId 
+            = analysisDisplayStyle.Id;
 
           t.Commit();
         }
