@@ -14,6 +14,13 @@ namespace RvtFader
 
       _settings = Settings.Load();
 
+      txtAttenuationAir.Text 
+        = _settings.AttenuationAirPerMetreInDb.ToString( 
+          "0.##" );
+
+      txtAttenuationWall.Text
+        = _settings.AttenuationWallInDb.ToString("0.##" );
+
       txtAttenuationAir.Validating += TxtAttenuationAir_Validating;
       txtAttenuationAir.Validated += TxtAttenuationAir_Validated;
       txtAttenuationWall.Validating += TxtAttenuationWall_Validating;

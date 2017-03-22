@@ -7,7 +7,7 @@ namespace RvtFader
   public class AppSettings<T> where T : new()
   {
     private const string _default_filename 
-      = "settings.json";
+      = "RvtFader.json";
 
     public void Save( 
       string fileName = _default_filename )
