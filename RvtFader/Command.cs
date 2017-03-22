@@ -113,11 +113,15 @@ namespace RvtFader
 
       if( -1 == _schemaId )
       {
-        AnalysisResultSchema resultSchema
+        AnalysisResultSchema schema
           = new AnalysisResultSchema( "Attenuation",
             "RvtFader signal attenuation" );
 
-        _schemaId = _sfm.RegisterResult( resultSchema );
+        List<string> unitNames = new List<string>( new string[1] {"dB"} );
+        List<double> unitFactors = new List<double>( new double[1] { 1.0 } );
+        schema.SetUnits( unitNames, unitFactors );
+
+        _schemaId = _sfm.RegisterResult( schema );
       }
     }
 
