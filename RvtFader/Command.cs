@@ -143,41 +143,44 @@ namespace RvtFader
       XYZ psource )
     {
       IList<UV> uvPts = new List<UV>();
-      List<double> uvVals = new List<double>();
+      IList<ValueAtPoint> uvValues = new List<ValueAtPoint>();
 
       BoundingBoxUV bb = face.GetBoundingBox();
 
       double umin = bb.Min.U;
       double umax = bb.Max.U;
-      double ustep = 0.02 * ( umax - umin );
+      double ustep = 0.2 * ( umax - umin );
 
       double vmin = bb.Min.V;
       double vmax = bb.Max.V;
-      double vstep = 0.02 * ( vmax - vmin );
+      double vstep = 0.2 * ( vmax - vmin );
 
       for( double u = umin; u <= umax; u += ustep )
       {
         for( double v = vmin; v <= vmax; v += vstep )
         {
           UV uv = new UV( u, v );
-          XYZ ptarget = face.Evaluate( uv ); 
+          XYZ ptarget = face.Evaluate( uv );
+          double val = AttenuationAt( psource, ptarget );
+
           uvPts.Add( uv );
-          uvVals.Add( AttenuationAt( psource, ptarget ) );
+
+          List<double> vals = new List<double>( 1 );
+          vals.Add( val );
+          uvValues.Add( new ValueAtPoint( vals ) );
         }
       }
 
-      IList<ValueAtPoint> valList = new List<ValueAtPoint>( 1 );
-      valList.Add( new ValueAtPoint( uvVals ) );
-      FieldValues fvals = new FieldValues( valList );
-
-      FieldDomainPointsByUV fdpts
+      FieldDomainPointsByUV fpts
         = new FieldDomainPointsByUV( uvPts );
+
+      FieldValues fvals = new FieldValues( uvValues );
 
       int idx = _sfm.AddSpatialFieldPrimitive( 
         face, Transform.Identity );
 
       _sfm.UpdateSpatialFieldPrimitive(
-        idx, fdpts, fvals, _schemaId );
+        idx, fpts, fvals, _schemaId );
     }
 
     public Result Execute(
