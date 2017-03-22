@@ -39,7 +39,7 @@ using System.Runtime.InteropServices;
 // 2017-03-23 2017.0.0.1 PaintFace works; todo: overwrite AVF when called repeatedly and implement ray trace
 // 2017-03-23 2017.0.0.2 avf works fine now with repeated calls
 // 2017-03-23 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
-// 2017-03-23 2017.0.0.4 started implementing AttenuationCalculator
+// 2017-03-23 2017.0.0.4 started implementing AttenuationCalculator and debugging ray tracing
 //
 [assembly: AssemblyVersion( "2017.0.0.4" )]
 [assembly: AssemblyFileVersion( "2017.0.0.4" )]

@@ -142,6 +142,8 @@ namespace RvtFader
     }
     #endregion // Set up analysis display style
 
+    static XYZ _z_offset = new XYZ( 0, 0, 5 );
+
     /// <summary>
     /// Calculate and paint the attenuation
     /// values on the given face.
@@ -167,6 +169,8 @@ namespace RvtFader
       List<double> vals = new List<double>( 1 );
       vals.Add( 0 );
 
+      XYZ psource2 = psource + _z_offset;
+
       for( double u = umin; u <= umax; u += ustep )
       {
         for( double v = vmin; v <= vmax; v += vstep )
@@ -177,8 +181,12 @@ namespace RvtFader
           {
             uvPts.Add( uv );
 
-            XYZ ptarget = face.Evaluate( uv );
-            vals[0] = calc.Attenuation( psource, ptarget );
+            XYZ ptarget = face.Evaluate( uv ) 
+              + _z_offset;
+
+            vals[0] = calc.Attenuation( 
+              psource2, ptarget );
+
             uvValues.Add( new ValueAtPoint( vals ) );
           }
         }
@@ -214,6 +222,8 @@ namespace RvtFader
           ObjectType.Face, 
           new FloorFilter(), 
           "Please pick signal source point." );
+
+        Debug.Print( Util.PointString( r.GlobalPoint ) );
       }
       catch( Autodesk.Revit.Exceptions
         .OperationCanceledException )

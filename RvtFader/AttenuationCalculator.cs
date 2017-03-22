@@ -10,11 +10,14 @@ namespace RvtFader
 {
   public class AttenuationCalculator
   {
+    Document _doc;
     View3D _view3d;
     ElementFilter _wallFilter;
 
     public AttenuationCalculator( Document doc )
     {
+      _doc = doc;
+
       // Find a 3D view to use for the 
       // ReferenceIntersector constructor.
 
@@ -41,7 +44,11 @@ namespace RvtFader
     /// </summary>
     public double Attenuation( XYZ psource, XYZ ptarget )
     {
-      return ptarget.DistanceTo( psource );
+      Debug.Print( string.Format( "{0} -> {1}",
+        Util.PointString( psource ),
+        Util.PointString( ptarget ) ) );
+
+      double a = ptarget.DistanceTo( psource );
 
       ReferenceIntersector intersector
         = new ReferenceIntersector( _wallFilter,
@@ -51,6 +58,21 @@ namespace RvtFader
 
       IList<ReferenceWithContext> referencesWithContext
         = intersector.Find( psource, ptarget - psource );
+
+      foreach( ReferenceWithContext rc in
+        referencesWithContext )
+      {
+        double d = rc.Proximity;
+        Reference r = rc.GetReference();
+        Element e = _doc.GetElement( r.ElementId );
+        Debug.Assert( e is Wall, "expected only walls" );
+
+        Debug.Print( 
+          string.Format( "wall {0} at {1}", 
+            e.Id, d ) );
+      }
+
+      return a;
     }
   }
 }
