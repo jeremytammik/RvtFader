@@ -113,15 +113,6 @@ namespace RvtFader
       _sfp_index = _sfm.AddSpatialFieldPrimitive(
         faceReference );
 
-      //_sfm = SpatialFieldManager.GetSpatialFieldManager( 
-      //  view );
-
-      //if( null == _sfm )
-      //{
-      //  _sfm = SpatialFieldManager
-      //    .CreateSpatialFieldManager( view, 1 );
-      //}
-
       if( -1 != _schemaId )
       {
         IList<int> results = _sfm.GetRegisteredResults();
@@ -161,16 +152,7 @@ namespace RvtFader
     public static void PaintFace(
       Face face,
       XYZ psource )
-
-      //Document doc, 
-      //Reference r )
     {
-      //XYZ psource = r.GlobalPoint;
-      //UV uvsource = r.UVPoint;
-      //Element floor = doc.GetElement( r.ElementId );
-      //Face face = floor.GetGeometryObjectFromReference(
-      //  r ) as Face;
-
       IList<UV> uvPts = new List<UV>();
       IList<ValueAtPoint> uvValues = new List<ValueAtPoint>();
 
@@ -208,8 +190,6 @@ namespace RvtFader
         = new FieldDomainPointsByUV( uvPts );
 
       FieldValues fvals = new FieldValues( uvValues );
-
-      //int idx = _sfm.AddSpatialFieldPrimitive( r );
 
       _sfm.UpdateSpatialFieldPrimitive(
         _sfp_index, fpts, fvals, _schemaId );
