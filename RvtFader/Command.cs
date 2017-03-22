@@ -155,18 +155,19 @@ namespace RvtFader
       double vmax = bb.Max.V;
       double vstep = 0.2 * ( vmax - vmin );
 
+      List<double> vals = new List<double>( 1 );
+      vals.Add( 0 );
+
       for( double u = umin; u <= umax; u += ustep )
       {
         for( double v = vmin; v <= vmax; v += vstep )
         {
           UV uv = new UV( u, v );
           XYZ ptarget = face.Evaluate( uv );
-          double val = AttenuationAt( psource, ptarget );
 
           uvPts.Add( uv );
 
-          List<double> vals = new List<double>( 1 );
-          vals.Add( val );
+          vals[0] = AttenuationAt( psource, ptarget );
           uvValues.Add( new ValueAtPoint( vals ) );
         }
       }
