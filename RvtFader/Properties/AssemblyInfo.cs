@@ -32,5 +32,12 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "2017.0.0.1" )]
-[assembly: AssemblyFileVersion( "2017.0.0.1" )]
+//
+// History:
+//
+// 2017-03-22 2017.0.0.0 settings and avf complete; todo: attenuation raytracing
+// 2017-03-23 2017.0.0.1 PaintFace works; todo: overwrite AVF when called repeatedly and implement ray trace
+// 2017-03-23 2017.0.0.2 avf works fine now with repeated calls
+//
+[assembly: AssemblyVersion( "2017.0.0.2" )]
+[assembly: AssemblyFileVersion( "2017.0.0.2" )]
