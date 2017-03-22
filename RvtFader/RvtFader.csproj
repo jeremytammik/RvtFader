@@ -74,8 +74,8 @@
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iCmdSettings.png" />
-    <Content Include="iCommand.png" />
+    <EmbeddedResource Include="iCmdSettings.png" />
+    <EmbeddedResource Include="iCommand.png" />
     <Content Include="RvtFader.addin" />
   </ItemGroup>
   <ItemGroup>
