@@ -15,6 +15,9 @@ namespace RvtFader
   [Transaction( TransactionMode.Manual )]
   public class Command : IExternalCommand
   {
+    /// <summary>
+    /// Select only floor elements.
+    /// </summary>
     class FloorFilter : ISelectionFilter
     {
       public bool AllowElement( Element e )
@@ -30,6 +33,10 @@ namespace RvtFader
 
     const string _displayStyleName = "Attenuation";
 
+    /// <summary>
+    /// Retrieve or set up the attenuation 
+    /// display style for the given view.
+    /// </summary>
     static void SetAvfDisplayStyle( View view )
     {
       Document doc = view.Document;
@@ -74,6 +81,10 @@ namespace RvtFader
     static int _schemaId = -1;
     static SpatialFieldManager _sfm = null;
 
+    /// <summary>
+    /// Set up the AVF spatial field manager 
+    /// for the given view.
+    /// </summary>
     static void SetUpAvfSfm( View view )
     {
       if( view.AnalysisDisplayStyleId
@@ -110,25 +121,59 @@ namespace RvtFader
       }
     }
 
-    public static void PaintFace( Face face, double value )
+    /// <summary>
+    /// Calculate the signal attenuation between the 
+    /// given source and target points.
+    /// </summary>
+    static double AttenuationAt( XYZ psource, XYZ ptarget )
     {
-      Transform trf = Transform.Identity;
+      return ptarget.DistanceTo( psource );
+    }
 
-      int idx = _sfm.AddSpatialFieldPrimitive( face, trf );
+    /// <summary>
+    /// Calculate and paint the attenuation
+    /// values on the given face.
+    /// </summary>
+    public static void PaintFace( 
+      Face face, 
+      XYZ psource )
+    {
       IList<UV> uvPts = new List<UV>();
-      List<double> doubleList = new List<double>();
-      IList<ValueAtPoint> valList = new List<ValueAtPoint>();
-      BoundingBoxUV bb = face.GetBoundingBox();
-      uvPts.Add( bb.Min );
-      doubleList.Add( value );
-      valList.Add( new ValueAtPoint( doubleList ) );
+      List<double> uvVals = new List<double>();
 
-      FieldDomainPointsByUV pnts
+      BoundingBoxUV bb = face.GetBoundingBox();
+
+      double umin = bb.Min.U;
+      double umax = bb.Max.U;
+      double ustep = 0.02 * ( umax - umin );
+
+      double vmin = bb.Min.V;
+      double vmax = bb.Max.V;
+      double vstep = 0.02 * ( vmax - vmin );
+
+      for( double u = umin; u <= umax; u += ustep )
+      {
+        for( double v = vmin; v <= vmax; v += vstep )
+        {
+          UV uv = new UV( u, v );
+          XYZ ptarget = face.Evaluate( uv ); 
+          uvPts.Add( uv );
+          uvVals.Add( AttenuationAt( psource, ptarget ) );
+        }
+      }
+
+      IList<ValueAtPoint> valList = new List<ValueAtPoint>( 1 );
+      valList.Add( new ValueAtPoint( uvVals ) );
+      FieldValues fvals = new FieldValues( valList );
+
+      FieldDomainPointsByUV fdpts
         = new FieldDomainPointsByUV( uvPts );
 
-      FieldValues vals = new FieldValues( valList );
-      _sfm.UpdateSpatialFieldPrimitive( idx, pnts,
-        vals, _schemaId );
+      int idx = _sfm.AddSpatialFieldPrimitive( 
+        face, Transform.Identity );
+
+      _sfm.UpdateSpatialFieldPrimitive(
+        idx, fdpts, fvals, _schemaId );
     }
 
     public Result Execute(
@@ -181,7 +226,7 @@ namespace RvtFader
 
       // Display attenuation.
 
-      PaintFace( face, 123 );
+      PaintFace( face, psource );
       
       return Result.Succeeded;
     }
