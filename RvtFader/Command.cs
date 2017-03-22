@@ -30,8 +30,10 @@ namespace RvtFader
 
     const string _displayStyleName = "Attenuation";
 
-    static ElementId GetAvfDisplayStyleId( Document doc )
+    static void SetAvfDisplayStyle( View view )
     {
+      Document doc = view.Document;
+
       ElementId id = AnalysisDisplayStyle.FindByName( 
         doc, _displayStyleName );
 
@@ -62,12 +64,11 @@ namespace RvtFader
 
           id = analysisDisplayStyle.Id;
 
-          //view.AnalysisDisplayStyleId = analysisDisplayStyle.Id;
+          view.AnalysisDisplayStyleId = analysisDisplayStyle.Id;
 
           t.Commit();
         }
       }
-      return id;
     }
 
     static int _schemaId = -1;
@@ -78,8 +79,7 @@ namespace RvtFader
       if( view.AnalysisDisplayStyleId
         == ElementId.InvalidElementId )
       {
-        view.AnalysisDisplayStyleId
-          = GetAvfDisplayStyleId( view.Document );
+        SetAvfDisplayStyle( view );
       }
 
       _sfm = SpatialFieldManager.GetSpatialFieldManager( 
