@@ -26,11 +26,18 @@ We use the Revit API `ReferenceIntersector` ray tracing functionality to detect 
 the [analysis visualisation framework AVF](http://thebuildingcoder.typepad.com/blog/avf) to display the heat map.
 
 
-## Implementation Steps
+## Implementation
 
-You can follow the implementation steps in detail by looking at the [list of releases](releases).
+To achieve this task, RvtFader implements the following:
 
-Summary:
+- Manage settings to be edited and stored (signal loss in dB)
+- Enable user to pick a source point on a floor
+- Determine the floor boundaries
+- Shoots rays from the picked point to an array of other target points covering the floor
+- Detemine the obstacles encountered by the ray, specifically wall elements
+- Display a 'heat map', i.e. colour gradient, representing the signal loss caused by the distance and number of walls between the source and the target points
+
+Summary of the steps towards achieving this:
 
 - Skeleton add-in using the [Visual Studio Revit Add-In Wizards](http://thebuildingcoder.typepad.com/blog/about-the-author.html#5.20).
 - External command for the settings user interface displaying a Windows form and storing data in JSON as developed for
@@ -44,6 +51,9 @@ the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepa
 ![Graphical debugging displaying model lines](img/rvtfader_graphical_debug_model_line.png "Graphical debugging displaying model lines")
 - `AttenuationCalculator` taking walls and door openings into account:</br>
 ![Attenuation calculation results](img/rvtfader_attenuation_with_doors.png "Attenuation calculation results")
+
+For more details on the implementation steps, please refer to the [list of releases](releases).
+
 
 
 ## Further Reading
