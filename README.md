@@ -31,7 +31,8 @@ You can follow the implementation steps in detail by looking at the [list of rel
 Summary:
 
 - Skeleton add-in using the [Visual Studio Revit Add-In Wizards](http://thebuildingcoder.typepad.com/blog/about-the-author.html#5.20).
-- External command for the settings user interface displaying a Windows form and storing data in JSON as developed for the [](http://thebuildingcoder.typepad.com/blog/2016/09/hololens-escape-path-waypoint-json-exporter.html):
+- External command for the settings user interface displaying a Windows form and storing data in JSON as developed for
+the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepad.com/blog/2016/09/hololens-escape-path-waypoint-json-exporter.html):
     - Display modal Windows form.
     - Implement form validation using `ErrorProvider` class, `Validating` and `Validated` events.
     - Store add-in option settings in JSON using the `JavaScriptSerializer` class.
