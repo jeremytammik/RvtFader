@@ -78,6 +78,12 @@ namespace RvtFader
           }
         }
       }
+      Debug.Print( 
+        string.Format( "{0} -> {1}: {2} walls",
+          Util.PointString( psource ), 
+          Util.PointString( ptarget ), 
+          wallIds.Count ) );
+
       return wallIds.Count;
     }
 
@@ -88,11 +94,11 @@ namespace RvtFader
     /// </summary>
     public double Attenuation( XYZ psource, XYZ ptarget )
     {
+#if DEBUG_GRAPHICAL
       Debug.Print( string.Format( "{0} -> {1}",
         Util.PointString( psource ),
         Util.PointString( ptarget ) ) );
 
-#if DEBUG_GRAPHICAL
       if( null == _sketch || 0.0001
         < _sketch.GetPlane().Origin.Z - psource.Z )
       {
