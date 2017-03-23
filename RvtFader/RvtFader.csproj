@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="AdWindows">
       <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2017\AdWindows.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RevitAPI">
