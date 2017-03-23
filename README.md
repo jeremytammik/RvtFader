@@ -52,7 +52,8 @@ the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepa
 - `AttenuationCalculator` taking walls and door openings into account:</br>
 ![Attenuation calculation results](img/rvtfader_attenuation_with_doors.png "Attenuation calculation results")
 
-For more details on the implementation steps, please refer to the [list of releases](releases).
+For more details on the implementation steps, please refer to
+the [list of releases](releases) and [commits](commits).
 
 
 
