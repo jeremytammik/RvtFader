@@ -1,6 +1,6 @@
 # RvtFader
 
-C# .NET Revit add-in to calculate and display signal attenuation using 
+Revit C# .NET API add-in to calculate and display signal attenuation using 
 the [analysis visualisation framework](http://thebuildingcoder.typepad.com/blog/avf) AVF
 and `ReferenceIntersector` ray tracing.
 
@@ -35,11 +35,11 @@ Summary:
     - Display modal Windows form.
     - Implement form validation using `ErrorProvider` class, `Validating` and `Validated` events.
     - Store add-in option settings in JSON using the `JavaScriptSerializer` class.
-- AVF heat map, initially simply based on distance from the selected source point:
+- AVF heat map, initially simply based on distance from the selected source point:</br>
 ![RvtFader displaying distance using AVF](img/rvtfader_avf.png "RvtFader displaying distance using AVF")
-- Graphical debugging displaying model lines representing the `ReferenceIntersector` rays traced using `ReferenceIntersector`:
+- Graphical debugging displaying model lines representing the `ReferenceIntersector` rays traced using `ReferenceIntersector`:</br>
 ![Graphical debugging displaying model lines](img/rvtfader_graphical_debug_model_line.png "Graphical debugging displaying model lines")
-- `AttenuationCalculator` taking walls and door openings into account:
+- `AttenuationCalculator` taking walls and door openings into account:</br>
 ![Attenuation calculation results](img/rvtfader_attenuation_with_doors.png "Attenuation calculation results")
 
 
