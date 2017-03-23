@@ -38,7 +38,7 @@ the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepa
     - Store add-in option settings in JSON using the `JavaScriptSerializer` class.
 - AVF heat map, initially simply based on distance from the selected source point:</br>
 ![RvtFader displaying distance using AVF](img/rvtfader_avf.png "RvtFader displaying distance using AVF")
-- Graphical debugging displaying model lines representing the `ReferenceIntersector` rays traced using `ReferenceIntersector`:</br>
+- Graphical debugging displaying model lines representing the `ReferenceIntersector` rays traced using `ReferenceIntersector`, conditionally compiled based on the pragma definition `DEBUG_GRAPHICAL`:</br>
 ![Graphical debugging displaying model lines](img/rvtfader_graphical_debug_model_line.png "Graphical debugging displaying model lines")
 - `AttenuationCalculator` taking walls and door openings into account:</br>
 ![Attenuation calculation results](img/rvtfader_attenuation_with_doors.png "Attenuation calculation results")
