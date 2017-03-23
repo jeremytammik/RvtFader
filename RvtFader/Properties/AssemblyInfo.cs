@@ -43,6 +43,7 @@ using System.Runtime.InteropServices;
 // 2017-03-24 2017.0.0.5 added graphical debugging to draw ModelLine representing ray --> rvtfader_graphical_debug_model_line.png
 // 2017-03-24 2017.0.0.6 removed graphical debugging and simplified wall filter; ray tacing works, walls are detected
 // 2017-03-24 2017.0.0.7 implemented GetWallCount and attenuation calculation --> rvtfader_attenuation_with_doors.png
+// 2017-03-24 2017.0.0.8 documented implementation and further reading
 //
-[assembly: AssemblyVersion( "2017.0.0.7" )]
-[assembly: AssemblyFileVersion( "2017.0.0.7" )]
+[assembly: AssemblyVersion( "2017.0.0.8" )]
+[assembly: AssemblyFileVersion( "2017.0.0.8" )]
