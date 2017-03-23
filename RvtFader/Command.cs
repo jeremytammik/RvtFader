@@ -244,8 +244,11 @@ namespace RvtFader
       Face face = floor.GetGeometryObjectFromReference(
         r ) as Face;
 
+
+      Settings settings = Settings.Load();
+
       AttenuationCalculator calc 
-        = new AttenuationCalculator( doc );
+        = new AttenuationCalculator( doc, settings );
 
 #if DEBUG_GRAPHICAL
       using( Transaction tx = new Transaction( doc ) )

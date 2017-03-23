@@ -40,8 +40,9 @@ using System.Runtime.InteropServices;
 // 2017-03-23 2017.0.0.2 avf works fine now with repeated calls
 // 2017-03-23 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
 // 2017-03-23 2017.0.0.4 started implementing AttenuationCalculator and debugging ray tracing
-// 2017-03-24 2017.0.0.5 added graphical debugging to draw ModelLine representing ray
+// 2017-03-24 2017.0.0.5 added graphical debugging to draw ModelLine representing ray --> rvtfader_graphical_debug_model_line.png
 // 2017-03-24 2017.0.0.6 removed graphical debugging and simplified wall filter; ray tacing works, walls are detected
+// 2017-03-24 2017.0.0.7 implemented GetWallCount and attenuation calculation --> rvtfader_attenuation_with_doors.png
 //
-[assembly: AssemblyVersion( "2017.0.0.6" )]
-[assembly: AssemblyFileVersion( "2017.0.0.6" )]
+[assembly: AssemblyVersion( "2017.0.0.7" )]
+[assembly: AssemblyFileVersion( "2017.0.0.7" )]

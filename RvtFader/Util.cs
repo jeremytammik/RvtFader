@@ -4,6 +4,21 @@ namespace RvtFader
 {
   class Util
   {
+    #region Unit Handling
+    const double _inchToMm = 25.4;
+    const double _footToMm = 12 * _inchToMm;
+    const double _footToMetre = _footToMm * 0.001;
+
+    /// <summary>
+    /// Convert a given length in feet to metres.
+    /// </summary>
+    public static double FootToMetre( double length )
+    {
+      return length * _footToMetre;
+    }
+    #endregion // Unit Handling
+
+    #region Formatting
     /// <summary>
     /// Return a string for a real number
     /// formatted to two decimal places.
@@ -37,5 +52,7 @@ namespace RvtFader
         RealString( p.Y ),
         RealString( p.Z ) );
     }
+    #endregion // Formatting
+
   }
 }
