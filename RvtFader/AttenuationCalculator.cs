@@ -39,9 +39,12 @@ namespace RvtFader
         .Cast<View3D>()
         .First<View3D>( isNotTemplate );
 
-      _wallFilter = new LogicalAndFilter(
-        new ElementCategoryFilter( BuiltInCategory.OST_Walls ),
-        new ElementIsElementTypeFilter( false ) );
+      //_wallFilter = new LogicalAndFilter(
+      //  new ElementCategoryFilter( BuiltInCategory.OST_Walls ),
+      //  new ElementIsElementTypeFilter( false ) );
+
+      _wallFilter = new ElementClassFilter( 
+        typeof( Wall ) );
     }
 
     /// <summary>
@@ -55,7 +58,7 @@ namespace RvtFader
         Util.PointString( psource ),
         Util.PointString( ptarget ) ) );
 
-#if DEBUG
+#if DEBUG_GRAPHICAL
       if( null == _sketch || 0.0001
         < _sketch.GetPlane().Origin.Z - psource.Z )
       {
@@ -68,7 +71,7 @@ namespace RvtFader
       Line line = Line.CreateBound( psource, ptarget );
 
       _sketch.Document.Create.NewModelCurve( line, _sketch );
-#endif // DEBUG
+#endif // DEBUG_GRAPHICAL
 
       double a = ptarget.DistanceTo( psource );
 

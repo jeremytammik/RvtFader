@@ -41,6 +41,7 @@ using System.Runtime.InteropServices;
 // 2017-03-23 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
 // 2017-03-23 2017.0.0.4 started implementing AttenuationCalculator and debugging ray tracing
 // 2017-03-24 2017.0.0.5 added graphical debugging to draw ModelLine representing ray
+// 2017-03-24 2017.0.0.6 removed graphical debugging and simplified wall filter
 //
-[assembly: AssemblyVersion( "2017.0.0.5" )]
-[assembly: AssemblyFileVersion( "2017.0.0.5" )]
+[assembly: AssemblyVersion( "2017.0.0.6" )]
+[assembly: AssemblyFileVersion( "2017.0.0.6" )]
