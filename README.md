@@ -13,7 +13,7 @@ It calculates the signal attenuation caused by distance and obstacles.
 
 In the first iteration, the only obstacles taken into account are walls.
 
-Two signal attenuation values are defined in the application settings, in decibels per metre and decibels, respectively:
+Two signal attenuation values in decibels are defined in the application settings:
 
 - Attenuation per metre in air
 - Attenuation by a wall
