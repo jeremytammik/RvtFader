@@ -247,8 +247,18 @@ namespace RvtFader
       AttenuationCalculator calc 
         = new AttenuationCalculator( doc );
 
-      PaintFace( face, r.GlobalPoint, calc );
-      
+#if DEBUG
+      using( Transaction tx = new Transaction( doc ) )
+      {
+        tx.Start( "Draw Debug Model Lines" );
+#endif // DEBUG
+
+        PaintFace( face, r.GlobalPoint, calc );
+
+#if DEBUG
+        tx.Commit();
+      }
+#endif // DEBUG
       return Result.Succeeded;
     }
   }
