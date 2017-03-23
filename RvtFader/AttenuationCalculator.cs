@@ -28,20 +28,11 @@ namespace RvtFader
       // Find a 3D view to use for the 
       // ReferenceIntersector constructor.
 
-      FilteredElementCollector collector
-        = new FilteredElementCollector( doc );
-
-      Func<View3D, bool> isNotTemplate = v3
-        => !( v3.IsTemplate );
-
-      _view3d = collector
-        .OfClass( typeof( View3D ) )
-        .Cast<View3D>()
-        .First<View3D>( isNotTemplate );
-
-      //_wallFilter = new LogicalAndFilter(
-      //  new ElementCategoryFilter( BuiltInCategory.OST_Walls ),
-      //  new ElementIsElementTypeFilter( false ) );
+      _view3d 
+        = new FilteredElementCollector( doc )
+          .OfClass( typeof( View3D ) )
+          .Cast<View3D>()
+          .First<View3D>( v => !v.IsTemplate );
 
       _wallFilter = new ElementClassFilter( 
         typeof( Wall ) );
