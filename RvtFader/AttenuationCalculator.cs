@@ -14,12 +14,12 @@ namespace RvtFader
     View3D _view3d;
     ElementFilter _wallFilter;
 
-#if DEBUG
+#if DEBUG_GRAPHICAL
     /// <summary>
     /// Draw model lines for graphical geometrical debugging.
     /// </summary>
     SketchPlane _sketch;
-#endif // DEBUG
+#endif // DEBUG_GRAPHICAL
 
     public AttenuationCalculator( Document doc )
     {
