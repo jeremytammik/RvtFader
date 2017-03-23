@@ -144,11 +144,11 @@ namespace RvtFader
 
     static XYZ _z_offset = new XYZ( 0, 0, 5 );
 
-    /// <summary>
-    /// Calculate and paint the attenuation
-    /// values on the given face.
-    /// </summary>
-    public static void PaintFace(
+  /// <summary>
+  /// Calculate and paint the attenuation
+  /// values on the given face.
+  /// </summary>
+  public static void PaintFace(
       Face face,
       XYZ psource,
       AttenuationCalculator calc )

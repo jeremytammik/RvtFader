@@ -14,6 +14,13 @@ namespace RvtFader
     View3D _view3d;
     ElementFilter _wallFilter;
 
+#if DEBUG
+    /// <summary>
+    /// Draw model lines for graphical geometrical debugging.
+    /// </summary>
+    SketchPlane _sketch;
+#endif // DEBUG
+
     public AttenuationCalculator( Document doc )
     {
       _doc = doc;
@@ -48,6 +55,21 @@ namespace RvtFader
         Util.PointString( psource ),
         Util.PointString( ptarget ) ) );
 
+#if DEBUG
+      if( null == _sketch || 0.0001
+        < _sketch.GetPlane().Origin.Z - psource.Z )
+      {
+        Plane plane = Plane.CreateByNormalAndOrigin(
+          XYZ.BasisZ, psource );
+
+        _sketch = SketchPlane.Create( _doc, plane );
+
+      }
+      Line line = Line.CreateBound( psource, ptarget );
+
+      _sketch.Document.Create.NewModelCurve( line, _sketch );
+#endif // DEBUG
+
       double a = ptarget.DistanceTo( psource );
 
       ReferenceIntersector intersector
@@ -67,8 +89,8 @@ namespace RvtFader
         Element e = _doc.GetElement( r.ElementId );
         Debug.Assert( e is Wall, "expected only walls" );
 
-        Debug.Print( 
-          string.Format( "wall {0} at {1}", 
+        Debug.Print(
+          string.Format( "wall {0} at {1}",
             e.Id, d ) );
       }
 
