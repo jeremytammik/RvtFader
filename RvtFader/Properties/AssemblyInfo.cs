@@ -45,7 +45,7 @@ using System.Runtime.InteropServices;
 // 2017-03-24 2017.0.0.7 implemented GetWallCount and attenuation calculation --> rvtfader_attenuation_with_doors.png
 // 2017-03-24 2017.0.0.8 documented implementation and further reading
 // 2017-03-24 2017.0.0.9 cleanup
-// 2017-03-24 2017.0.0.10 created custom icon icon
+// 2017-03-24 2017.0.0.10 created custom icon
 //
 [assembly: AssemblyVersion( "2017.0.0.10" )]
 [assembly: AssemblyFileVersion( "2017.0.0.10" )]
