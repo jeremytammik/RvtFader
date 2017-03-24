@@ -36,16 +36,17 @@ using System.Runtime.InteropServices;
 // History:
 //
 // 2017-03-22 2017.0.0.0 settings and avf complete; todo: attenuation raytracing
-// 2017-03-23 2017.0.0.1 PaintFace works; todo: overwrite AVF when called repeatedly and implement ray trace
-// 2017-03-23 2017.0.0.2 avf works fine now with repeated calls
-// 2017-03-23 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
-// 2017-03-23 2017.0.0.4 started implementing AttenuationCalculator and debugging ray tracing
-// 2017-03-24 2017.0.0.5 added graphical debugging to draw ModelLine representing ray --> rvtfader_graphical_debug_model_line.png
-// 2017-03-24 2017.0.0.6 removed graphical debugging and simplified wall filter; ray tacing works, walls are detected
-// 2017-03-24 2017.0.0.7 implemented GetWallCount and attenuation calculation --> rvtfader_attenuation_with_doors.png
-// 2017-03-24 2017.0.0.8 documented implementation and further reading
-// 2017-03-24 2017.0.0.9 cleanup
-// 2017-03-24 2017.0.0.10 created custom icon
+// 2017-03-22 2017.0.0.1 PaintFace works; todo: overwrite AVF when called repeatedly and implement ray trace
+// 2017-03-22 2017.0.0.2 avf works fine now with repeated calls
+// 2017-03-22 2017.0.0.3 refactored SetUpAvfSfm and PaintFace
+// 2017-03-22 2017.0.0.4 started implementing AttenuationCalculator and debugging ray tracing
+// 2017-03-23 2017.0.0.5 added graphical debugging to draw ModelLine representing ray --> rvtfader_graphical_debug_model_line.png
+// 2017-03-23 2017.0.0.6 removed graphical debugging and simplified wall filter; ray tacing works, walls are detected
+// 2017-03-23 2017.0.0.7 implemented GetWallCount and attenuation calculation --> rvtfader_attenuation_with_doors.png
+// 2017-03-23 2017.0.0.8 documented implementation and further reading
+// 2017-03-23 2017.0.0.9 cleanup
+// 2017-03-23 2017.0.0.10 created custom icon
+// 2017-03-24 2017.0.0.11 published
 //
-[assembly: AssemblyVersion( "2017.0.0.10" )]
-[assembly: AssemblyFileVersion( "2017.0.0.10" )]
+[assembly: AssemblyVersion( "2017.0.0.11" )]
+[assembly: AssemblyFileVersion( "2017.0.0.11" )]
