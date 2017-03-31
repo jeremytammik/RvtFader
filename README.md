@@ -4,6 +4,11 @@ Revit C# .NET API add-in to calculate and display signal attenuation using
 the [analysis visualisation framework](http://thebuildingcoder.typepad.com/blog/avf) AVF
 and `ReferenceIntersector` ray tracing.
 
+You might also be interested in comparing this add-in with 
+the [ForgeFader app](https://github.com/jeremytammik/forgefader) implementing
+similar functionality using 
+the [Autodesk Forge](https://developer.autodesk.com) platform.
+
 ![RvtFader](RvtFader/iCommand.png "RvtFader")
 
 
