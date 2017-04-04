@@ -48,6 +48,7 @@ using System.Runtime.InteropServices;
 // 2017-03-23 2017.0.0.10 created custom icon
 // 2017-03-24 2017.0.0.11 published
 // 2017-04-04 2017.0.0.12 added test files from https://github.com/jeremytammik/forgefader
+// 2017-04-04 2017.0.0.13 added images and updated readme
 //
-[assembly: AssemblyVersion( "2017.0.0.12" )]
-[assembly: AssemblyFileVersion( "2017.0.0.12" )]
+[assembly: AssemblyVersion( "2017.0.0.13" )]
+[assembly: AssemblyFileVersion( "2017.0.0.13" )]
