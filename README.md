@@ -1,6 +1,6 @@
 # RvtFader
 
-Revit C# .NET API add-in to calculate and display signal attenuation using 
+Revit C# .NET API add-in implementing an external application to calculate and display signal attenuation using 
 the [analysis visualisation framework](http://thebuildingcoder.typepad.com/blog/avf) AVF
 and `ReferenceIntersector` ray tracing.
 
@@ -9,7 +9,7 @@ the [ForgeFader app](https://github.com/jeremytammik/forgefader) implementing
 similar functionality using 
 the [Autodesk Forge](https://developer.autodesk.com) platform.
 
-![RvtFader](RvtFader/iCommand.png "RvtFader")
+![RvtFader icon](RvtFader/iCommand.png "RvtFader icon")
 
 
 ## Task and Functionality
@@ -35,12 +35,15 @@ the [analysis visualisation framework AVF](http://thebuildingcoder.typepad.com/b
 
 To achieve this task, RvtFader implements the following:
 
+- Implement an external application with custom ribbon tab, panel, split button, main and settings commands
 - Manage settings to be edited and stored (signal loss in dB).
 - Enable user to pick a source point on a floor.
 - Determine the floor boundaries.
 - Shoots rays from the picked point to an array of other target points covering the floor.
 - Determine the obstacles encountered by the ray, specifically wall elements.
 - Display a 'heat map', i.e. colour gradient, representing the signal loss caused by the distance and number of walls between the source and the target points.
+
+![RvtFader ribbon tab](img/rvtfader_ribbon_tab.png "RvtFader ribbon tab")
 
 Summary of the steps towards achieving this:
 
@@ -60,6 +63,7 @@ the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepa
 For more details on the implementation steps, please refer to
 the [list of releases](releases) and [commits](commits).
 
+![Fader test model](img/rvtfader_result.png "Fader test model")
 
 
 ## Further Reading
