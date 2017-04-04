@@ -64,6 +64,9 @@ the [HoloLens escape path waypoint JSON exporter](http://thebuildingcoder.typepa
 For more details on the implementation steps, please refer to
 the [list of releases](releases) and [commits](commits).
 
+Two sample models are provided in the [test](test) subdirectory; the same are also provided and used with
+the [ForgeFader app](https://github.com/jeremytammik/forgefader) app:
+
 ![Fader test model](img/rvtfader_result.png "Fader test model")
 
 
@@ -99,4 +102,3 @@ Jeremy Tammik,
 
 This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 Please see the [LICENSE](LICENSE) file for full details.
-
