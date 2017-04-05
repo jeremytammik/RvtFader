@@ -42,7 +42,7 @@ To achieve this task, RvtFader implements the following:
 - Manage settings to be edited and stored (signal loss in dB).
 - Enable user to pick a source point on a floor.
 - Determine the floor boundaries.
-- Shoots rays from the picked point to an array of other target points covering the floor.
+- Shoot rays from the picked point to an array of other target points covering the floor.
 - Determine the obstacles encountered by the ray, specifically wall elements.
 - Display a 'heat map', i.e. colour gradient, representing the signal loss caused by the distance and number of walls between the source and the target points.
 
