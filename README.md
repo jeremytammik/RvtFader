@@ -1,6 +1,6 @@
 # RvtFader
 
-Revit C# .NET API add-in implementing an external application to calculate and display signal attenuation using 
+C# .NET Revit API add-in implementing an external application to calculate and display signal attenuation using 
 the [analysis visualisation framework](http://thebuildingcoder.typepad.com/blog/avf) AVF
 and `ReferenceIntersector` ray tracing.
 
