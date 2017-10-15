@@ -49,6 +49,7 @@ using System.Runtime.InteropServices;
 // 2017-03-24 2017.0.0.11 published
 // 2017-04-04 2017.0.0.12 added test files from https://github.com/jeremytammik/forgefader
 // 2017-04-04 2017.0.0.13 added images and updated readme
+// 2017-10-15 2018.0.0.0 flat migration to Revit 2018
 //
-[assembly: AssemblyVersion( "2017.0.0.13" )]
-[assembly: AssemblyFileVersion( "2017.0.0.13" )]
+[assembly: AssemblyVersion( "2018.0.0.0" )]
+[assembly: AssemblyFileVersion( "2018.0.0.0" )]
